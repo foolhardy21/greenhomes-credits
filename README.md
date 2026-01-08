@@ -2,6 +2,10 @@
 
 A React application for IGBC green homes feasibility assessment with credit evaluation tools.
 
+## Docs
+1. [API Documentation](docs/api.md)
+2. [UI Documentation](docs/ui.md)
+
 ## Features
 
 - Interactive credit distribution across multiple categories
