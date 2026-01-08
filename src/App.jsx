@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { Tabs } from "./components/common/Tabs"
 import { Header } from "./components/Header"
 import { CATEGORIES, CREDIT_DISTRIBUTION } from "./constants"
@@ -7,6 +7,7 @@ import { CreditsTable } from "./components/CreditsTable"
 function App() {
   const [category, setCategory] = useState("SD")
   const [creditsDist, setCreditsDist] = useState(CREDIT_DISTRIBUTION)
+  const [errors, setErrors] = useState({})
 
   const [yesTotal, maybeTotal] = useMemo(() => {
     return Object.values(creditsDist)
@@ -22,7 +23,10 @@ function App() {
 
         <div className="flex justify-end mb-4">
           <button
-            className="py-2 px-4 text-[16px] cursor-pointer bg-green-primary hover:opacity-90 text-white font-semibold rounded-lg transition-all duration-300">
+            disabled={Object.keys(errors).length}
+            className="py-2 px-4 text-[16px] cursor-pointer bg-green-primary hover:opacity-90 text-white font-semibold rounded-lg transition-all duration-300 
+            disabled:opacity-70 disabled:cursor-not-allowed"
+          >
             Export to PDF
           </button>
         </div>
@@ -60,11 +64,13 @@ function App() {
         />
 
         {/* Credit Table */}
-        <div className="mt-8 h-[calc(100vh-420px)] overflow-y-auto">
+        <div className="mt-6 ml-4 h-[calc(100vh-420px)] overflow-y-auto">
           <CreditsTable
             creditsDist={creditsDist}
             setCreditsDist={setCreditsDist}
             category={category}
+            errors={errors}
+            setErrors={setErrors}
           />
         </div>
       </div>
