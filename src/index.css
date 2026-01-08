@@ -9,3 +9,29 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+
+@theme {
+  --color-green-primary: oklch(50.8% 0.118 165.612);
+  --color-green-secondary: oklch(95% 0.052 163.051);
+  --color-green-accent: oklch(84.5% 0.143 164.978);
+
+  --color-yellow-primary: oklch(79.5% 0.184 86.047);
+  --color-yellow-secondary: oklch(97.3% 0.071 103.193);
+  --color-yellow-accent: oklch(94.5% 0.129 101.54);
+
+  --color-red-primary: oklch(50.5% 0.213 27.518);
+  --color-red-secondary: oklch(93.6% 0.032 17.717);
+  --color-red-accent: oklch(80.8% 0.114 19.571);
+
+  --color-gray-primary: oklch(37.3% 0.034 259.733);
+  --color-gray-secondary: oklch(96.7% 0.003 264.542);
+  --color-gray-accent: oklch(92.8% 0.006 264.531);
+
+  --color-black-primary: oklch(27.8% 0.033 256.848);
+}
