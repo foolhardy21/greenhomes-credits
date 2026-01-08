@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Dropdown } from "./common/Dropdown"
 
-export const Header = ({ className }) => {
+export const Header = ({ className, readOnly = false }) => {
     const [dropdownVal, setDropdownVal] = useState("certified")
 
     return (
@@ -18,17 +18,21 @@ export const Header = ({ className }) => {
             </div>
             <div className="flex items-center gap-4">
                 <label className="font-semibold text-black-primary">Target Level:</label>
-                <Dropdown
-                    value={dropdownVal}
-                    onChange={setDropdownVal}
-                    items={[
-                        { value: "platinum", label: "Platinum" },
-                        { value: "gold", label: "Gold" },
-                        { value: "silver", label: "Silver" },
-                        { value: "certified", label: "Certified" },
-                    ]}
-                    className="w-[100px]"
-                />
+                {readOnly ? (
+                    <span className="font-semibold text-black-primary capitalize">{dropdownVal}</span>
+                ) : (
+                    <Dropdown
+                        value={dropdownVal}
+                        onChange={setDropdownVal}
+                        items={[
+                            { value: "platinum", label: "Platinum" },
+                            { value: "gold", label: "Gold" },
+                            { value: "silver", label: "Silver" },
+                            { value: "certified", label: "Certified" },
+                        ]}
+                        className="w-[100px]"
+                    />
+                )}
             </div>
         </header>
     )

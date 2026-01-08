@@ -7,6 +7,7 @@ export const CreditsTable = ({
     setCreditsDist,
     errors,
     setErrors,
+    readOnly = false,
 }) => {
 
     function handlePointsChange({ category, creditName, bucketName, points }) {
@@ -93,43 +94,59 @@ export const CreditsTable = ({
                                 <td className="p-4 text-center text-gray-primary font-light">
                                     {
                                         !required
-                                            ? <NumberInput
-                                                min={0}
-                                                max={points.max}
-                                                value={points.yes}
-                                                onChange={(e) => handlePointsChange({ category, creditName: credit.name, bucketName: "yes", points: Number(e.target.value) })}
-                                            /> : <>-</>
+                                            ? readOnly ? (
+                                                <span className="w-10 inline-block text-center p-1">{points.yes}</span>
+                                            ) : (
+                                                <NumberInput
+                                                    min={0}
+                                                    max={points.max}
+                                                    value={points.yes}
+                                                    onChange={(e) => handlePointsChange({ category, creditName: credit.name, bucketName: "yes", points: Number(e.target.value) })}
+                                                />
+                                            ) : <>-</>
                                     }
                                 </td>
                                 <td className="p-4 text-center text-gray-primary font-light">
                                     {
                                         !required
-                                            ? <NumberInput
-                                                min={0}
-                                                max={points.max}
-                                                value={points.maybe}
-                                                onChange={(e) => handlePointsChange({ category, creditName: credit.name, bucketName: "maybe", points: Number(e.target.value) })}
-                                            /> : <>-</>
+                                            ? readOnly ? (
+                                                <span className="w-10 inline-block text-center p-1">{points.maybe}</span>
+                                            ) : (
+                                                <NumberInput
+                                                    min={0}
+                                                    max={points.max}
+                                                    value={points.maybe}
+                                                    onChange={(e) => handlePointsChange({ category, creditName: credit.name, bucketName: "maybe", points: Number(e.target.value) })}
+                                                />
+                                            ) : <>-</>
                                     }
                                 </td>
                                 <td className="p-4 text-center text-gray-primary font-light">
                                     {
                                         !required
-                                            ? <NumberInput
-                                                min={0}
-                                                max={points.max}
-                                                value={points.no}
-                                                onChange={(e) => handlePointsChange({ category, creditName: credit.name, bucketName: "no", points: Number(e.target.value) })}
-                                            /> : <>-</>
+                                            ? readOnly ? (
+                                                <span className="w-10 inline-block text-center p-1">{points.no}</span>
+                                            ) : (
+                                                <NumberInput
+                                                    min={0}
+                                                    max={points.max}
+                                                    value={points.no}
+                                                    onChange={(e) => handlePointsChange({ category, creditName: credit.name, bucketName: "no", points: Number(e.target.value) })}
+                                                />
+                                            ) : <>-</>
                                     }
                                 </td>
                                 <td className="p-4 text-gray-primary font-light">
-                                    <textarea
-                                        className="w-full border rounded p-1 text-[14px]" rows="2"
-                                        onChange={(e) => handleNotesChange({ category, creditName: credit.name, notes: e.target.value })}
-                                    >
-                                        {credit.notes}
-                                    </textarea>
+                                    {readOnly ? (
+                                        <span className="whitespace-pre-wrap">{credit.notes || ''}</span>
+                                    ) : (
+                                        <textarea
+                                            className="w-full border rounded p-1 text-[14px]" rows="2"
+                                            onChange={(e) => handleNotesChange({ category, creditName: credit.name, notes: e.target.value })}
+                                        >
+                                            {credit.notes}
+                                        </textarea>
+                                    )}
                                 </td>
                             </tr>
                         )
