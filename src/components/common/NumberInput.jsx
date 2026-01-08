@@ -6,7 +6,7 @@ export const NumberInput = ({ min, max, value, onChange }) => {
             max={max}
             value={value}
             onChange={onChange}
-            className="w-10 border border-gray-primary rounded text-center p-1 focus:outline-none"
+            className="w-10 border border-gray-accent rounded text-center p-1 focus:outline-none"
         />
     )
 }

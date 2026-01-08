@@ -141,7 +141,7 @@ export const CreditsTable = ({
                                         <span className="whitespace-pre-wrap">{credit.notes || ''}</span>
                                     ) : (
                                         <textarea
-                                            className="w-full border rounded p-1 text-[14px]" rows="2"
+                                            className="w-full border border-gray-accent rounded p-1 text-[14px]" rows="2"
                                             onChange={(e) => handleNotesChange({ category, creditName: credit.name, notes: e.target.value })}
                                         >
                                             {credit.notes}
