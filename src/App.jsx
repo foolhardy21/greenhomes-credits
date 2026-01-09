@@ -110,23 +110,30 @@ function App() {
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>IGBC Assessment Report</title>
-                <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-                <style>
-                  :root {
-                    --color-green-primary: #16a34a;
-                    --color-green-secondary: #f0fdf4;
-                    --color-green-accent: #16a34a;
-                    --color-yellow-primary: #eab308;
-                    --color-yellow-secondary: #fefce8;
-                    --color-yellow-accent: #eab308;
-                    --color-gray-primary: #6b7280;
-                    --color-gray-secondary: #f9fafb;
-                    --color-gray-accent: #d1d5db;
-                    --color-black-primary: #000000;
-                    --color-red-primary: #ef4444;
-                    --color-red-accent: #ef4444;
+                <script src="https://cdn.tailwindcss.com"></script>
+                <script>
+                  tailwind.config = {
+                    theme: {
+                      extend: {
+                        colors: {
+                          'green-primary': '#16a34a',
+                          'green-secondary': '#f0fdf4',
+                          'green-accent': '#16a34a',
+                          'yellow-primary': '#eab308',
+                          'yellow-secondary': '#fefce8',
+                          'yellow-accent': '#eab308',
+                          'gray-primary': '#6b7280',
+                          'gray-secondary': '#f9fafb',
+                          'gray-accent': '#d1d5db',
+                          'black-primary': '#000000',
+                          'red-primary': '#ef4444',
+                          'red-accent': '#ef4444'
+                        }
+                      }
+                    }
                   }
-                  
+                </script>
+                <style>
                   body {
                     font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
                     margin: 0;
@@ -134,42 +141,6 @@ function App() {
                     background: white;
                     color: #374151;
                   }
-                  
-                  .bg-green-primary { background-color: var(--color-green-primary); }
-                  .bg-green-secondary { background-color: var(--color-green-secondary); }
-                  .bg-green-accent { background-color: var(--color-green-accent); }
-                  .bg-yellow-primary { background-color: var(--color-yellow-primary); }
-                  .bg-yellow-secondary { background-color: var(--color-yellow-secondary); }
-                  .bg-yellow-accent { background-color: var(--color-yellow-accent); }
-                  .bg-gray-primary { background-color: var(--color-gray-primary); }
-                  .bg-gray-secondary { background-color: var(--color-gray-secondary); }
-                  .bg-gray-accent { background-color: var(--color-gray-accent); }
-                  .bg-red-primary { background-color: var(--color-red-primary); }
-                  .bg-red-accent { background-color: var(--color-red-accent); }
-                  
-                  .text-green-primary { color: var(--color-green-primary); }
-                  .text-green-secondary { color: var(--color-green-secondary); }
-                  .text-green-accent { color: var(--color-green-accent); }
-                  .text-yellow-primary { color: var(--color-yellow-primary); }
-                  .text-yellow-secondary { color: var(--color-yellow-secondary); }
-                  .text-yellow-accent { color: var(--color-yellow-accent); }
-                  .text-gray-primary { color: var(--color-gray-primary); }
-                  .text-gray-secondary { color: var(--color-gray-secondary); }
-                  .text-gray-accent { color: var(--color-gray-accent); }
-                  .text-red-primary { color: var(--color-red-primary); }
-                  .text-red-accent { color: var(--color-red-accent); }
-                  
-                  .border-green-primary { border-color: var(--color-green-primary); }
-                  .border-green-secondary { border-color: var(--color-green-secondary); }
-                  .border-green-accent { border-color: var(--color-green-accent); }
-                  .border-yellow-primary { border-color: var(--color-yellow-primary); }
-                  .border-yellow-secondary { border-color: var(--color-yellow-secondary); }
-                  .border-yellow-accent { border-color: var(--color-yellow-accent); }
-                  .border-gray-primary { border-color: var(--color-gray-primary); }
-                  .border-gray-secondary { border-color: var(--color-gray-secondary); }
-                  .border-gray-accent { border-color: var(--color-gray-accent); }
-                  .border-red-primary { border-color: var(--color-red-primary); }
-                  .border-red-accent { border-color: var(--color-red-accent); }
                   
                   @page {
                     margin: 0.5in;
