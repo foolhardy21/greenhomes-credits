@@ -14,7 +14,25 @@ export const CreditsTable = ({
         const updatedCreditsDist = { ...creditsDist }
         updatedCreditsDist[category] = updatedCreditsDist[category].map(credit => {
             if (credit.name === creditName) {
-                credit.points[bucketName] = points
+                switch (bucketName) {
+                    case "yes":
+                        let yesDiff = points - credit.points[bucketName]
+                        credit.points["yes"] += yesDiff
+                        if (credit.points["maybe"] >= yesDiff) {
+                            credit.points["maybe"] = Math.max(0, credit.points["maybe"] - yesDiff)
+                        } else {
+                            yesDiff -= credit.points["maybe"]
+                            credit.points["maybe"] = 0
+                            credit.points["no"] = Math.max(0, credit.points["no"] - yesDiff)
+                        }
+                        break
+                    case "maybe":
+                        const diff = points - credit.points[bucketName]
+                        credit.points["maybe"] += diff
+                        credit.points["no"] = Math.max(0, credit.points["no"] - diff)
+                        break
+                    default: credit.points[bucketName] = points
+                }
             }
             return credit
         })
@@ -128,6 +146,7 @@ export const CreditsTable = ({
                                                 <span className="w-10 inline-block text-center p-1">{points.no}</span>
                                             ) : (
                                                 <NumberInput
+                                                    disabled={true}
                                                     min={0}
                                                     max={points.max}
                                                     value={points.no}
